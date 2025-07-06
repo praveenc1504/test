@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 exports.signup = async (req, res) => {
     try {
-        const { name, password } = req.body;
+        const { name, password ,email} = req.body;
 
         const existingUser = await User.findOne({ name });
         if (existingUser) {
@@ -11,7 +11,7 @@ exports.signup = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ name, password: hashedPassword });
+        const user = new User({ name, password: hashedPassword ,email});
         await user.save();
 
         res.status(201).json({ message: 'User successfully created' });
@@ -23,7 +23,7 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        const { name, password } = req.body;
+        const { name, password ,email} = req.body;
 
         const user = await User.findOne({ name });
         if (!user) {

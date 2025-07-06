@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import './App.css';
 function App() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [email,setEmail]= useState('');
+
   const [mode, setMode] = useState('login'); // or 'signup'
   const [msg, setMsg] = useState('');
 
@@ -11,7 +13,7 @@ function App() {
     e.preventDefault();
     try {
       const endpoint = mode === 'login' ? 'login' : 'signup';
-      const res =await axios.post(`http://localhost:5000/api/${endpoint}`, { name, password })
+      const res =await axios.post(`http://localhost:5000/api/${endpoint}`, { name, password, email });
       setMsg(res.data.message);
     } catch (err) {
       setMsg(err.response?.data?.error || 'Something went wrong');
@@ -19,7 +21,7 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{ padding: '2rem', textAlign: 'center' ,display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <h2>{mode === 'login' ? 'Login' : 'Sign Up'}</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -36,7 +38,15 @@ function App() {
           onChange={(e) => setPassword(e.target.value)}
           required
         /><br /><br />
-        <button type="submit">{mode === 'login' ? 'Login' : 'Sign Up'}</button>
+        <input 
+          type='email'
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        /><br /><br />
+        
+                <button type="submit">{mode === 'login' ? 'Login' : 'Sign Up'}</button>
       </form>
       <p>{msg}</p>
       <p>
