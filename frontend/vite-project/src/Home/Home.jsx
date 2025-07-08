@@ -19,7 +19,7 @@ function Home() {
         <div className='left-nav'>
           <h2>total test: {total}</h2>
           <h2>avg: {avg}</h2>
-          <butto onClick={()=>navigate('/login')}>Login</butto>
+         <button onClick={() => navigate('/login')}>Login</button>
         </div>
       </div>
 
@@ -27,7 +27,7 @@ function Home() {
         <div className='own-test' onClick={()=>navigate('/own-test')}>
             <p>Select your own test</p>
         </div>
-        <div className='random-test'  onClick={()=>navigate('random-test')}>
+        <div className='random-test'  onClick={()=>navigate('/random-test')}>
             <p>Take a random test</p>
     
         </div>

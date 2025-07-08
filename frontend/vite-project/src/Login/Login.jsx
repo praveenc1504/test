@@ -10,7 +10,7 @@ function Login() {
   const [mode, setMode] = useState('login'); // or 'signup'
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
-    useEffecf(()=>{
+    useEffect(()=>{
         if(msg.toLocaleLowerCase() === 'login successful'){
            setTimeout(() => {
       navigate('/home'); // Replace with your actual path

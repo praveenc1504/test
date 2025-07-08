@@ -11,6 +11,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="own-test" element={<Own_test />} />
         <Route path="random-test" element={<Random_test/>} />
         <Route path="login" element={<Login/>} />
